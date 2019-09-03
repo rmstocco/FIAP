@@ -1,0 +1,14 @@
+function depositar(valor,origem,destino)
+{
+
+  eth.sendTransaction({from:eth.accounts[origem],to:eth.accounts[destino],value:web3.toWei(valor)})
+	var totalBal = 0;
+	for (	var acctNum in eth.accounts) {
+	var acct = eth.accounts[acctNum];
+	var acctBal = web3.fromWei(eth.getBalance(acct).toString(), "ether");
+	totalBal += parseFloat(acctBal);
+	console.log(" eth.accounts[" + acctNum + "]: \t" + acct + " \tbalance: "
+	+ acctBal + " ether");
+	}
+	console.log(" Total balance: " + totalBal + " ether");
+};
